@@ -1,0 +1,7 @@
+{
+  "name": "gestion-taches",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
