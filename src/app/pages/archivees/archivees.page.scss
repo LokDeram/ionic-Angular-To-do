@@ -1,0 +1,91 @@
+.task-list {
+  margin-top: 1rem;
+}
+
+.task-card {
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  &.archived {
+    opacity: 0.8;
+    border-left: 4px solid var(--ion-color-success);
+  }
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  
+  .task-date, .task-owner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--ion-color-medium);
+  }
+}
+
+.task-status {
+  margin: 1rem 0;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  
+  ion-button {
+    --border-radius: 8px;
+  }
+}
+
+.completed-task {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.completed-description {
+  opacity: 0.7;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--ion-color-medium);
+  
+  .empty-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+  
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--ion-color-dark);
+  }
+  
+  p {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .task-actions {
+    flex-direction: column;
+    
+    ion-button {
+      width: 100%;
+    }
+  }
+  
+  .task-info {
+    .task-date, .task-owner {
+      font-size: 0.8rem;
+    }
+  }
+}

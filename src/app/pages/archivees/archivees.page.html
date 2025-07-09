@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tâches Archivées</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="tasks.length > 0; else vide" class="task-list">
+    <ion-card *ngFor="let task of tasks" class="task-card archived">
+      <ion-card-header>
+        <ion-card-title class="completed-task">{{ task.title }}</ion-card-title>
+        <ion-card-subtitle>
+          <div class="task-info">
+            <div class="task-date">
+              <ion-icon name="calendar-outline"></ion-icon>
+              {{ task.date | date:'dd/MM/yyyy HH:mm' }}
+            </div>
+            <div class="task-owner" *ngIf="!task.isOwner">
+              <ion-icon name="person-outline"></ion-icon>
+              {{ task.firstName }} {{ task.lastName }}
+            </div>
+            <div class="task-owner" *ngIf="task.isOwner">
+              <ion-icon name="person-outline"></ion-icon>
+              Moi
+            </div>
+          </div>
+        </ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <p class="completed-description">{{ task.description }}</p>
+        
+        <div class="task-status">
+          <ion-chip color="success">
+            <ion-icon name="checkmark-circle"></ion-icon>
+            <ion-label>Terminée</ion-label>
+          </ion-chip>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ng-template #vide>
+    <div class="empty-state">
+      <ion-icon name="archive-outline" class="empty-icon"></ion-icon>
+      <h3>Aucune tâche archivée</h3>
+      <p>Les tâches terminées apparaîtront ici</p>
+    </div>
+  </ng-template>
+</ion-content>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Autres Tâches</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="tasks.length > 0; else vide" class="task-list">
+    <ion-card *ngFor="let task of tasks" class="task-card">
+      <ion-card-header>
+        <ion-card-title>{{ task.title }}</ion-card-title>
+        <ion-card-subtitle>
+          <div class="task-info">
+            <div class="task-date">
+              <ion-icon name="calendar-outline"></ion-icon>
+              {{ task.date | date:'dd/MM/yyyy HH:mm' }}
+            </div>
+            <div class="task-owner">
+              <ion-icon name="person-outline"></ion-icon>
+              {{ task.firstName }} {{ task.lastName }}
+            </div>
+          </div>
+        </ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <p>{{ task.description }}</p>
+        
+        <div class="task-status">
+          <ion-chip [color]="task.isDone ? 'success' : 'warning'">
+            <ion-icon [name]="task.isDone ? 'checkmark-circle' : 'time'"></ion-icon>
+            <ion-label>{{ task.isDone ? 'Terminée' : 'En cours' }}</ion-label>
+          </ion-chip>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ng-template #vide>
+    <div class="empty-state">
+      <ion-icon name="people-outline" class="empty-icon"></ion-icon>
+      <h3>Aucune tâche des autres utilisateurs</h3>
+      <p>Les tâches des autres étudiants apparaîtront ici</p>
+    </div>
+  </ng-template>
+</ion-content>
